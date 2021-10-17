@@ -16,6 +16,15 @@ namespace adb_connect
         {
             InitializeComponent();
         }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            refresh();
+        }
+        private void refresh()
+        {
+            rtbLog.Text += Adb.refresh();
+            rtbLog.ScrollToCaret();
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -24,8 +33,8 @@ namespace adb_connect
 
         private void button3_Click(object sender, EventArgs e)
         {
-            rtbLog.Text += Adb.refresh();
-            rtbLog.ScrollToCaret();
+            refresh();
         }
+
     }
 }

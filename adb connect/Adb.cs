@@ -16,8 +16,8 @@ namespace adb_connect
             // Redirect the output stream of the child process.
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardOutput = true;
-            p.StartInfo.FileName = "python";
-            p.StartInfo.Arguments = "--version";
+            p.StartInfo.FileName = "adb";
+            p.StartInfo.Arguments = "devices";
             p.Start();
             // Do not wait for the child process to exit before
             // reading to the end of its redirected stream.
