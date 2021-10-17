@@ -9,15 +9,15 @@ namespace adb_connect
 {
     class Adb
     {
-        public static string getDevices()
+        private static string executeCmd(string filename, string args)
         {
             // Start the child process.
             Process p = new Process();
             // Redirect the output stream of the child process.
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardOutput = true;
-            p.StartInfo.FileName = "adb";
-            p.StartInfo.Arguments = "devices";
+            p.StartInfo.FileName = filename;
+            p.StartInfo.Arguments = args;
             p.Start();
             // Do not wait for the child process to exit before
             // reading to the end of its redirected stream.
@@ -28,13 +28,21 @@ namespace adb_connect
 
             return output;
         }
-        public static void connect()
+        public static string getDevices()
         {
-
+            return executeCmd("adb", "devices");
         }
-        public static void restart()
+        public static string connect()
         {
-
+            return executeCmd("adb", "connect 192.168.0.101:5555");
+        }
+        public static string disconnect()
+        {
+            return executeCmd("adb", "disconnect 192.168.0.101:5555");
+        }
+        public static string restart()
+        {
+            return "";
         }
         public static string refresh()
         {

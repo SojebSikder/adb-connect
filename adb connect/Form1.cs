@@ -20,21 +20,38 @@ namespace adb_connect
         {
             refresh();
         }
+        private void connect()
+        {
+            rtbLog.Text += Adb.connect();
+            rtbLog.SelectionStart = rtbLog.Text.Length;
+            rtbLog.ScrollToCaret();
+        }
+        private void restart()
+        {
+            rtbLog.Text += Adb.restart();
+            rtbLog.SelectionStart = rtbLog.Text.Length;
+            rtbLog.ScrollToCaret();
+        }
         private void refresh()
         {
             rtbLog.Text += Adb.refresh();
+            rtbLog.SelectionStart = rtbLog.Text.Length;
             rtbLog.ScrollToCaret();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnDisconnect_Click(object sender, EventArgs e)
         {
-            Adb.connect();
+            Adb.disconnect();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnRefresh_Click(object sender, EventArgs e)
         {
             refresh();
         }
 
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            connect();
+        }
     }
 }
