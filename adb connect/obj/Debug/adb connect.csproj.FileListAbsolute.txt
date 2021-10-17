@@ -1,0 +1,8 @@
+D:\My Program\project\c#\adb connect\adb connect\bin\Debug\adb connect.exe.config
+D:\My Program\project\c#\adb connect\adb connect\bin\Debug\adb connect.exe
+D:\My Program\project\c#\adb connect\adb connect\bin\Debug\adb connect.pdb
+D:\My Program\project\c#\adb connect\adb connect\obj\Debug\adb_connect.Form1.resources
+D:\My Program\project\c#\adb connect\adb connect\obj\Debug\adb_connect.Properties.Resources.resources
+D:\My Program\project\c#\adb connect\adb connect\obj\Debug\adb connect.csproj.GenerateResource.Cache
+D:\My Program\project\c#\adb connect\adb connect\obj\Debug\adb connect.exe
+D:\My Program\project\c#\adb connect\adb connect\obj\Debug\adb connect.pdb
