@@ -6,4 +6,3 @@ D:\My Program\project\c#\adb connect\adb connect\obj\Debug\adb_connect.Propertie
 D:\My Program\project\c#\adb connect\adb connect\obj\Debug\adb connect.csproj.GenerateResource.Cache
 D:\My Program\project\c#\adb connect\adb connect\obj\Debug\adb connect.exe
 D:\My Program\project\c#\adb connect\adb connect\obj\Debug\adb connect.pdb
-D:\My Program\project\c#\adb connect\adb connect\obj\Debug\adb connect.csprojResolveAssemblyReference.cache

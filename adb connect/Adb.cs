@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -59,15 +60,25 @@ namespace adb_connect
         public static List<string> GetLocalIPAddress()
         {
             List<string> ipAdd = new List<string>();
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
-            {
-                if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                {
-                    ipAdd.Add(ip.ToString());
-                }
-            }
-            return ipAdd;
+            var addresses = Dns.GetHostEntry((Dns.GetHostName()))
+                    .AddressList
+                    .Where(x => x.AddressFamily == AddressFamily.InterNetwork)
+                    .Select(x => x.ToString()).ToList();
+                    
+
+            return addresses;
+            //List<string> ipAdd = new List<string>();
+            ////var host = Dns.GetHostEntry(Dns.GetHostName());
+            //IPHostEntry HostEntry = Dns.GetHostEntry((Dns.GetHostName()));
+            //foreach (var ip in HostEntry.AddressList)
+            ////foreach (var ip in host.AddressList)
+            //{
+            //    if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+            //    {
+            //        ipAdd.Add(ip.ToString());
+            //    }
+            //}
+            //return ipAdd;
             //throw new Exception("No network adapters with an IPv4 address in the system!");
         }
     }
