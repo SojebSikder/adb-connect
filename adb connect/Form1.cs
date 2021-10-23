@@ -19,6 +19,7 @@ namespace adb_connect
         private void Form1_Load(object sender, EventArgs e)
         {
             refresh();
+            getAllIp();
         }
         private void connect()
         {
@@ -28,13 +29,27 @@ namespace adb_connect
         }
         private void restart()
         {
-            rtbLog.Text += Adb.restart();
-            rtbLog.SelectionStart = rtbLog.Text.Length;
-            rtbLog.ScrollToCaret();
+            setMessage(Adb.restart());
         }
         private void refresh()
         {
-            rtbLog.Text += Adb.refresh();
+            rtbLog.Text += Adb.refresh()+"\n";
+            rtbLog.SelectionStart = rtbLog.Text.Length;
+            rtbLog.ScrollToCaret();
+        }
+        private void getAllIp()
+        {
+            
+            foreach (var item in Adb.GetLocalIPAddress())
+            {
+                cbDevice.Items.Add(item);
+            }
+
+            cbDevice.SelectedIndex = 0;
+        }
+        private void setMessage(string value)
+        {
+            rtbLog.Text += value + "\n";
             rtbLog.SelectionStart = rtbLog.Text.Length;
             rtbLog.ScrollToCaret();
         }
