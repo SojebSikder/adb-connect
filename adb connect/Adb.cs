@@ -10,17 +10,6 @@ namespace adb_connect
 {
     class Adb
     {
-        public static string device;
-        public static string setDevice()
-        {
-            string hostName = Dns.GetHostName(); // Retrive the Name of HOST  
-            Console.WriteLine(hostName);
-            // Get the IP  
-            //string myIP = Dns.GetHostByName(hostName).AddressList[0].ToString();
-            string myIP = Dns.GetHostEntry(hostName).AddressList[0].ToString();
-            return myIP;
-            //device = id;
-        }
         private static string executeCmd(string filename, string args)
         {
             // Start the child process.
@@ -44,13 +33,13 @@ namespace adb_connect
         {
             return executeCmd("adb", "devices");
         }
-        public static string connect()
+        public static string connect(string ip,string port = "5555")
         {
-            return executeCmd("adb", "connect"+ device +":5555");
+            return executeCmd("adb", "connect"+ ip + ":"+port);
         }
-        public static string disconnect()
+        public static string disconnect(string ip,string port = "5555")
         {
-            return executeCmd("adb", "disconnect"+ device +":5555");
+            return executeCmd("adb", "disconnect"+ ip + ":"+port);
         }
         public static string restart()
         {
@@ -58,7 +47,7 @@ namespace adb_connect
         }
         public static string refresh()
         {
-            return setDevice();
+            return "";
             //executeCmd("adb", "tcpip 5555");
             //return getDevices();
         }
@@ -72,7 +61,6 @@ namespace adb_connect
                 if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
                 {
                     ipAdd.Add(ip.ToString());
-                    Console.WriteLine(ip.ToString()+"\n");
                 }
             }
             return ipAdd;

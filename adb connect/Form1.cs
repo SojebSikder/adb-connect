@@ -23,19 +23,14 @@ namespace adb_connect
         }
         private void connect()
         {
-            rtbLog.Text += Adb.connect();
-            rtbLog.SelectionStart = rtbLog.Text.Length;
-            rtbLog.ScrollToCaret();
+            setMessage(Adb.connect(cbDevice.Text));
         }
         private void restart()
         {
-            setMessage(Adb.restart());
         }
         private void refresh()
         {
-            rtbLog.Text += Adb.refresh()+"\n";
-            rtbLog.SelectionStart = rtbLog.Text.Length;
-            rtbLog.ScrollToCaret();
+            setMessage(Adb.refresh());
         }
         private void getAllIp()
         {
@@ -54,9 +49,12 @@ namespace adb_connect
             rtbLog.ScrollToCaret();
         }
 
+
+        // Events
+
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
-            Adb.disconnect();
+            setMessage(Adb.disconnect(cbDevice.Text));
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
