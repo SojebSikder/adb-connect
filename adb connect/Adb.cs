@@ -35,11 +35,11 @@ namespace adb_connect
         }
         public static string connect(string ip,string port = "5555")
         {
-            return executeCmd("adb", "connect"+ ip + ":"+port);
+            return executeCmd("adb", "connect "+ ip + ":"+port);
         }
         public static string disconnect(string ip,string port = "5555")
         {
-            return executeCmd("adb", "disconnect"+ ip + ":"+port);
+            return executeCmd("adb", "disconnect "+ ip + ":"+port);
         }
         public static string restart()
         {
