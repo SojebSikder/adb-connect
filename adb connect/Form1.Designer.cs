@@ -51,10 +51,10 @@
             // cbDevice
             // 
             this.cbDevice.FormattingEnabled = true;
-            this.cbDevice.Location = new System.Drawing.Point(20, 19);
+            this.cbDevice.Location = new System.Drawing.Point(13, 19);
             this.cbDevice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbDevice.Name = "cbDevice";
-            this.cbDevice.Size = new System.Drawing.Size(180, 29);
+            this.cbDevice.Size = new System.Drawing.Size(275, 29);
             this.cbDevice.TabIndex = 1;
             // 
             // rtbLog

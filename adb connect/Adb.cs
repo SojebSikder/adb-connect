@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace adb_connect
@@ -57,16 +59,16 @@ namespace adb_connect
             //return getDevices();
         }
 
-        public static List<string> GetLocalIPAddress()
+        public static List<NetworkInterface> GetLocalIPAddress()
         {
             List<string> ipAdd = new List<string>();
             var addresses = Dns.GetHostEntry((Dns.GetHostName()))
                     .AddressList
                     .Where(x => x.AddressFamily == AddressFamily.InterNetwork)
                     .Select(x => x.ToString()).ToList();
-                    
 
-            return addresses;
+            return NetworkInterface.GetAllNetworkInterfaces().ToList();
+            //return addresses;
             //List<string> ipAdd = new List<string>();
             ////var host = Dns.GetHostEntry(Dns.GetHostName());
             //IPHostEntry HostEntry = Dns.GetHostEntry((Dns.GetHostName()));
@@ -80,6 +82,14 @@ namespace adb_connect
             //}
             //return ipAdd;
             //throw new Exception("No network adapters with an IPv4 address in the system!");
+        }
+
+//1: lo inet 127.0.0.1/8 scope host lo\       valid_lft forever preferred_lft forever
+//32: wlan0 inet 192.168.10.241/24 brd 192.168.10.255 scope global wlan0\       valid_lft forever preferred_lft forever
+        public static void parseAddress(string stdout)
+        {
+            Match match = Regex.Match(stdout, @"/ (?<= inet\s +)(((\d +)\.)+(\d +))\/\d +/ g", RegexOptions.IgnoreCase);
+            Console.WriteLine(match.Groups[0].Value);
         }
     }
 }

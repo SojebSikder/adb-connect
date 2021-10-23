@@ -20,6 +20,11 @@ namespace adb_connect
         {
             refresh();
             getAllIp();
+
+            string input =
+@"1: lo inet 127.0.0.1 / 8 scope host lo\       valid_lft forever preferred_lft forever
+32: wlan0 inet 192.168.10.241/24 brd 192.168.10.255 scope global wlan0\       valid_lft forever preferred_lft forever";
+            Adb.parseAddress(input.Trim());
         }
         private void connect()
         {
@@ -38,7 +43,7 @@ namespace adb_connect
             
             foreach (var item in Adb.GetLocalIPAddress())
             {
-                cbDevice.Items.Add(item);
+                cbDevice.Items.Add(item.Description);
             }
 
             cbDevice.SelectedIndex = 0;
