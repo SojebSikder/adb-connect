@@ -23,6 +23,7 @@ namespace adb_connect
         }
         private void connect()
         {
+            setMessage(Adb.startServer());
             setMessage(Adb.connect(cbDevice.Text));
         }
         private void restart()

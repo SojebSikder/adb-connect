@@ -33,6 +33,10 @@ namespace adb_connect
         {
             return executeCmd("adb", "devices");
         }
+        public static string startServer(string port = "5555")
+        {
+            return executeCmd("adb", "tcpip 5555 " + port);
+        }
         public static string connect(string ip,string port = "5555")
         {
             return executeCmd("adb", "connect "+ ip + ":"+port);
