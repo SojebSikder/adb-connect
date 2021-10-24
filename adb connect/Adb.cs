@@ -61,7 +61,10 @@ namespace adb_connect
         }
         public static string restart()
         {
-            return executeCmd("adb", "kill-server && start-server");
+            string result;
+            executeCmd("adb", "kill-server");
+            result = executeCmd("adb", "start-server");
+            return result;
         }
 
         public static List<string> GetLocalIPAddress()
@@ -79,7 +82,6 @@ namespace adb_connect
         {
             string pattern = @"\s+";
             string[] matches = Regex.Split(stdout, pattern);
-            Console.WriteLine(matches);
             return matches;   
         }
 

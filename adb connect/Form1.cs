@@ -19,19 +19,12 @@ namespace adb_connect
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            refresh();
             getAllIp();
         }
         private void connect()
         {
             setMessage(Adb.startServer());
             setMessage(Adb.connect(cbDevice.Text));
-        }
-        private void restart()
-        {
-        }
-        private void refresh()
-        {
         }
         private void getAllIp()
         {
@@ -67,7 +60,7 @@ namespace adb_connect
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            refresh();
+            getAllIp();
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
