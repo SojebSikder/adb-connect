@@ -38,7 +38,7 @@ namespace adb_connect
         }
         public static string startServer(string port = "5555")
         {
-            return executeCmd("adb", "tcpip 5555 " + port);
+            return executeCmd("adb", "tcpip " + port);
         }
         public static string connect(string ip,string port = "5555")
         {
@@ -60,8 +60,6 @@ namespace adb_connect
         public static string refresh()
         {
             return "";
-            //executeCmd("adb", "tcpip 5555");
-            //return getDevices();
         }
 
         public static List<string> GetLocalIPAddress()
@@ -84,15 +82,6 @@ namespace adb_connect
             string pattern = @"(((\d+)\.)+(\d+))\/\d+";
             Regex rg = new Regex(pattern, RegexOptions.ECMAScript);
             MatchCollection matches = rg.Matches(stdout);
-
-            //foreach (Match match in matches)
-            //{
-            //    try
-            //    {
-            //        Console.WriteLine(match.Value);
-            //    }
-            //    catch { }
-            //}
             return matches;
 
            
