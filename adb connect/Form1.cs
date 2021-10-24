@@ -21,11 +21,6 @@ namespace adb_connect
         {
             refresh();
             getAllIp();
-
-                Console.WriteLine(Adb.parseDevice(@"List of devices attached
-442f3d0d        device")[4]);
-
-            ;
         }
         private void connect()
         {
@@ -78,6 +73,11 @@ namespace adb_connect
         private void btnConnect_Click(object sender, EventArgs e)
         {
             connect();
+        }
+
+        private void btnRestart_Click(object sender, EventArgs e)
+        {
+           setMessage(Adb.restart());
         }
     }
 }

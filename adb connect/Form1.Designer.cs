@@ -86,6 +86,7 @@
             this.btnRestart.TabIndex = 4;
             this.btnRestart.Text = "Restart";
             this.btnRestart.UseVisualStyleBackColor = true;
+            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
             // 
             // btnRefresh
             // 

@@ -61,7 +61,7 @@ namespace adb_connect
         }
         public static string restart()
         {
-            return executeCmd("adb", "restart");
+            return executeCmd("adb", "kill-server && start-server");
         }
 
         public static List<string> GetLocalIPAddress()
