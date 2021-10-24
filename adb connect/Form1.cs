@@ -28,6 +28,7 @@ namespace adb_connect
         }
         private void getAllIp()
         {
+            cbDevice.Items.Clear();
             string input = Adb.getIpFromAdb();
 
             foreach (Match match in Adb.parseAddress(input))
