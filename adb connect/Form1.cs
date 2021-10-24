@@ -46,7 +46,8 @@ namespace adb_connect
             {
                 try
                 {
-                    cbDevice.Items.Add(match.Value);
+                    string onlyIp = match.Value.Split('/')[0];
+                    cbDevice.Items.Add(onlyIp);
                     cbDevice.SelectedIndex = 0;
                 }
                 catch { }
