@@ -1,5 +1,5 @@
 # adb-connect
-This is simple adb manager to connect android devices over wifi
+This is simple adb manager application to connect android devices over wifi. It help us to use android device without usb.
 
 ![alt text](https://github.com/SojebSikder/adb-connect/blob/main/ss/img1.PNG?raw=true)
 ![alt text](https://github.com/SojebSikder/adb-connect/blob/main/ss/img2.PNG?raw=true)
