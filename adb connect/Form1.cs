@@ -21,6 +21,11 @@ namespace adb_connect
         {
             refresh();
             getAllIp();
+
+                Console.WriteLine(Adb.parseDevice(@"List of devices attached
+442f3d0d        device")[4]);
+
+            ;
         }
         private void connect()
         {
@@ -32,7 +37,6 @@ namespace adb_connect
         }
         private void refresh()
         {
-            setMessage(Adb.refresh());
         }
         private void getAllIp()
         {
@@ -43,11 +47,12 @@ namespace adb_connect
                 try
                 {
                     cbDevice.Items.Add(match.Value);
+                    cbDevice.SelectedIndex = 0;
                 }
                 catch { }
             }
 
-            cbDevice.SelectedIndex = 0;
+            
         }
         private void setMessage(string value)
         {

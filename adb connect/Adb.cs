@@ -48,18 +48,20 @@ namespace adb_connect
         {
             return executeCmd("adb", "disconnect "+ ip + ":"+port);
         }
-        // Get Ip address from adb using device id
-        public static string getIpFromAdb(string deviceId= "442f3d0d")
+        public static string getDeviceIdFromAdb()
         {
+            return executeCmd("adb", "devices -l");
+        }
+        // Get Ip address from adb using device id
+        public static string getIpFromAdb()
+        {
+            string getDevices = getDeviceIdFromAdb();
+            string deviceId = Adb.parseDevice(getDevices)[4];
             return executeCmd("adb", "-s "+deviceId+" shell ip -0 -4 addr");
         }
         public static string restart()
         {
-            return "";
-        }
-        public static string refresh()
-        {
-            return "";
+            return executeCmd("adb", "restart");
         }
 
         public static List<string> GetLocalIPAddress()
@@ -73,9 +75,17 @@ namespace adb_connect
             return addresses;
         }
 
+        public static string[] parseDevice(string stdout)
+        {
+            string pattern = @"\s+";
+            string[] matches = Regex.Split(stdout, pattern);
+            Console.WriteLine(matches);
+            return matches;   
+        }
 
-//1: lo inet 127.0.0.1/8 scope host lo\       valid_lft forever preferred_lft forever
-//32: wlan0 inet 192.168.10.241/24 brd 192.168.10.255 scope global wlan0\       valid_lft forever preferred_lft forever
+
+        //1: lo inet 127.0.0.1/8 scope host lo\       valid_lft forever preferred_lft forever
+        //32: wlan0 inet 192.168.10.241/24 brd 192.168.10.255 scope global wlan0\       valid_lft forever preferred_lft forever
         public static MatchCollection parseAddress(string stdout)
         {
             //string pattern = @"/(?<=inet\s+)(((\d+)\.)+(\d+))\/\d+/g";
@@ -83,8 +93,6 @@ namespace adb_connect
             Regex rg = new Regex(pattern, RegexOptions.ECMAScript);
             MatchCollection matches = rg.Matches(stdout);
             return matches;
-
-           
         }
     }
 }
