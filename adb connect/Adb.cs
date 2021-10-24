@@ -18,6 +18,7 @@ namespace adb_connect
             // Start the child process.
             Process p = new Process();
             // Redirect the output stream of the child process.
+            p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             p.StartInfo.UseShellExecute = false;
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.FileName = filename;
@@ -56,7 +57,7 @@ namespace adb_connect
         public static string getIpFromAdb()
         {
             string getDevices = getDeviceIdFromAdb();
-            string deviceId = Adb.parseDevice(getDevices)[4];
+            string deviceId = parseDevice(getDevices)[4];
             return executeCmd("adb", "-s "+deviceId+" shell ip -0 -4 addr");
         }
         public static string restart()
