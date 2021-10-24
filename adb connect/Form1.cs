@@ -23,7 +23,7 @@ namespace adb_connect
 
             string input = @"1: lo inet 127.0.0.1 / 8 scope host lo\       valid_lft forever preferred_lft forever
 32: wlan0 inet 192.168.10.241/24 brd 192.168.10.255 scope global wlan0\       valid_lft forever preferred_lft forever";
-            setMessage(Adb.parseAddress(input));
+           Adb.parseAddress(input);
         }
         private void connect()
         {
