@@ -48,6 +48,11 @@ namespace adb_connect
         {
             return executeCmd("adb", "disconnect "+ ip + ":"+port);
         }
+        // Get Ip address from adb using device id
+        public static string getIpFromAdb(string deviceId= "442f3d0d")
+        {
+            return executeCmd("adb", "-s "+deviceId+" shell ip -0 -4 addr");
+        }
         public static string restart()
         {
             return "";
@@ -59,7 +64,7 @@ namespace adb_connect
             //return getDevices();
         }
 
-        public static List<NetworkInterface> GetLocalIPAddress()
+        public static List<string> GetLocalIPAddress()
         {
             List<string> ipAdd = new List<string>();
             var addresses = Dns.GetHostEntry((Dns.GetHostName()))
@@ -67,8 +72,9 @@ namespace adb_connect
                     .Where(x => x.AddressFamily == AddressFamily.InterNetwork)
                     .Select(x => x.ToString()).ToList();
 
-            return NetworkInterface.GetAllNetworkInterfaces().ToList();
+            return addresses;
         }
+
 
 //1: lo inet 127.0.0.1/8 scope host lo\       valid_lft forever preferred_lft forever
 //32: wlan0 inet 192.168.10.241/24 brd 192.168.10.255 scope global wlan0\       valid_lft forever preferred_lft forever
