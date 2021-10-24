@@ -68,20 +68,6 @@ namespace adb_connect
                     .Select(x => x.ToString()).ToList();
 
             return NetworkInterface.GetAllNetworkInterfaces().ToList();
-            //return addresses;
-            //List<string> ipAdd = new List<string>();
-            ////var host = Dns.GetHostEntry(Dns.GetHostName());
-            //IPHostEntry HostEntry = Dns.GetHostEntry((Dns.GetHostName()));
-            //foreach (var ip in HostEntry.AddressList)
-            ////foreach (var ip in host.AddressList)
-            //{
-            //    if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-            //    {
-            //        ipAdd.Add(ip.ToString());
-            //    }
-            //}
-            //return ipAdd;
-            //throw new Exception("No network adapters with an IPv4 address in the system!");
         }
 
 //1: lo inet 127.0.0.1/8 scope host lo\       valid_lft forever preferred_lft forever
@@ -93,14 +79,14 @@ namespace adb_connect
             Regex rg = new Regex(pattern, RegexOptions.ECMAScript);
             MatchCollection matches = rg.Matches(stdout);
 
-            foreach (Match match in matches)
-            {
-                try
-                {
-                    Console.WriteLine(match.Value);
-                }
-                catch { }
-            }
+            //foreach (Match match in matches)
+            //{
+            //    try
+            //    {
+            //        Console.WriteLine(match.Value);
+            //    }
+            //    catch { }
+            //}
             return matches;
 
            

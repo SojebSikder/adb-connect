@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,7 +24,15 @@ namespace adb_connect
 
             string input = @"1: lo inet 127.0.0.1 / 8 scope host lo\       valid_lft forever preferred_lft forever
 32: wlan0 inet 192.168.10.241/24 brd 192.168.10.255 scope global wlan0\       valid_lft forever preferred_lft forever";
-           Adb.parseAddress(input);
+
+            foreach (Match match in Adb.parseAddress(input))
+            {
+                try
+                {
+                    cbDevice.Items.Add(match.Value);
+                }
+                catch { }
+            }
         }
         private void connect()
         {
