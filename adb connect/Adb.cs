@@ -88,11 +88,12 @@ namespace adb_connect
 //32: wlan0 inet 192.168.10.241/24 brd 192.168.10.255 scope global wlan0\       valid_lft forever preferred_lft forever
         public static string parseAddress(string stdout)
         {
-            Regex rg = new Regex(@"/(?<=inet\s+)(((\d+)\.)+(\d+))\/\d+/g");
+            //string pattern = @"/(?<=inet\s+)(((\d+)\.)+(\d+))\/\d+/g";
+            string pattern = @"/(((\d+)\.)+(\d+))\/\d+/g";
+            Regex rg = new Regex(pattern);
             Match match = rg.Match(stdout);
             if (match.Success)
             {
-                Console.WriteLine("Match Value: " + match.Value);
                 return match.Value;
             }else
             {
